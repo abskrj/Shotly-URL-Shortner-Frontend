@@ -1,4 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Sotly URL Shortner Frontend
+
+Live: https://codedoc.herokuapp.com
+
+NOTE: This is only Frontend, visit the below mentioned repo to see the backend.
+
+Backend: [Click Here](https://github.com/abhishekraj272/Shotly-URL-Shortner-Backend.git)
 
 ## Available Scripts
 
@@ -62,7 +68,3 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/ad
 ### Deployment
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
