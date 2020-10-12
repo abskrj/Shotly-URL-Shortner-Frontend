@@ -20,23 +20,19 @@ export class ShortForm extends Component {
 
   createAlert = (variant, message) => {
     this.setState({
-      alert: (
-        <Alert variant={variant}>
-          {message}
-        </Alert>
-      ),
+      alert: <Alert variant={variant}>{message}</Alert>,
     });
   };
 
   deleteAlert = () => {
     this.setState({
-      alert: null
-    })
-  }
+      alert: null,
+    });
+  };
 
   onSubmit = (e) => {
     e.preventDefault();
-    this.createAlert('info', "Request Processing, Please Wait!")
+    this.createAlert("info", "Request Processing, Please Wait!");
 
     let config = {
       headers: {
@@ -53,24 +49,35 @@ export class ShortForm extends Component {
         },
         config
       )
-      .then((respose) => {
+      .then((res) => {
+        if (res.data.statusCode === 200) {
+          this.createAlert("success", res.data.statusTxt);
 
-        this.deleteAlert();
+          this.setState({
+            shortedUrl: `https://sotly.herokuapp.com/${res.data.shortCode}`,
+          });
+        }
 
-        console.log("then");
-        console.log(respose);
-        this.setState({
-          shortedUrl: `https://sotly.herokuapp.com/${respose.data.shortCode}`,
-        });
-
-        this.createAlert('success', "URL shorted successfully");
+        else if (res.data.statusCode === 400) {
+          this.createAlert("warning", res.data.statusTxt);
+          this.setState({
+            shortedUrl: '',
+          });
+        }
+        else {
+          this.createAlert("danger", res.data.statusTxt);
+          this.setState({
+            shortedUrl: '',
+          });
+        }
       })
-      .catch((respose) => {
-
+      .catch((res) => {
         this.deleteAlert();
 
         console.log("catched: ");
-        console.log(respose);
+        console.log(res);
+
+        this.createAlert("danger", "Something Went Wrong");
       });
   };
 
@@ -125,9 +132,7 @@ export class ShortForm extends Component {
           </Row>
         </Form>
 
-        <div className="mt-5">
-          {alert}
-        </div>
+        <div className="mt-5">{alert}</div>
 
         <div className="mt-5">
           <Row>
