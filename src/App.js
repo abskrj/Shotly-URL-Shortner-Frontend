@@ -7,7 +7,7 @@ export default function App() {
   return (
     <div>
       <NavBarSuper />
-      <Container>
+      <Container className="mt-5">
         <ShortForm />
       </Container>
     </div>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Button, Form, Col } from "react-bootstrap";
+import { Row, Button, Form, Col, Alert } from "react-bootstrap";
 import axios from "axios";
 
 export class ShortForm extends Component {
@@ -10,6 +10,7 @@ export class ShortForm extends Component {
       urlCode: "",
       shortedUrl: "",
       copySuccess: "",
+      alert: null,
     };
   }
 
@@ -17,8 +18,25 @@ export class ShortForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  createAlert = (variant, message) => {
+    this.setState({
+      alert: (
+        <Alert variant={variant}>
+          {message}
+        </Alert>
+      ),
+    });
+  };
+
+  deleteAlert = () => {
+    this.setState({
+      alert: null
+    })
+  }
+
   onSubmit = (e) => {
     e.preventDefault();
+    this.createAlert('info', "Request Processing, Please Wait!")
 
     let config = {
       headers: {
@@ -36,15 +54,23 @@ export class ShortForm extends Component {
         config
       )
       .then((respose) => {
+
+        this.deleteAlert();
+
+        console.log("then");
         console.log(respose);
         this.setState({
           shortedUrl: `https://sotly.herokuapp.com/${respose.data.shortCode}`,
         });
-        return respose;
+
+        this.createAlert('success', "URL shorted successfully");
       })
       .catch((respose) => {
+
+        this.deleteAlert();
+
+        console.log("catched: ");
         console.log(respose);
-        return respose;
       });
   };
 
@@ -54,13 +80,22 @@ export class ShortForm extends Component {
     // This is just personal preference.
     // I prefer to not show the whole text area selected.
     e.target.focus();
-    this.setState({ copySuccess: "Copied!" });
+    this.setState({
+      copySuccess: "Copied!",
+    });
+
+    setInterval(() => {
+      this.setState({
+        copySuccess: "",
+      });
+    }, 5000);
   };
 
   render() {
     const urlReceived = this.state.urlReceived;
     const urlCode = this.state.urlCode;
     const shortedUrl = this.state.shortedUrl;
+    const alert = this.state.alert;
 
     return (
       <div>
@@ -91,6 +126,10 @@ export class ShortForm extends Component {
         </Form>
 
         <div className="mt-5">
+          {alert}
+        </div>
+
+        <div className="mt-5">
           <Row>
             <Col>
               <Form.Control
@@ -103,8 +142,8 @@ export class ShortForm extends Component {
               />
             </Col>
             <Col>
-              <Button onClick={this.copyToClipboard}>Click to Copy</Button>
-              <p>{this.state.copySuccess}</p>
+              <Button onClick={this.copyToClipboard}>Copy</Button>
+              <p className="text-muted">{this.state.copySuccess}</p>
             </Col>
           </Row>
         </div>

@@ -1,7 +1,23 @@
 import React, { Component } from "react";
-import { Navbar } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
+import axios from 'axios';
 
 export class NavBarSuper extends Component {
+  constructor() {
+    super();
+    this.state = {
+      reqCount: 0
+    }
+  }
+
+  componentDidMount() {
+    axios.get('https://sotly.herokuapp.com/api/v1/count')
+      .then((result) => {
+        this.setState({reqCount: result.data[0].count})
+      })
+  }
+
+
   render() {
     return (
       <div>
@@ -15,12 +31,13 @@ export class NavBarSuper extends Component {
               alt="React Bootstrap logo"
             />
           </Navbar.Brand>
-          {/* <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+          <Nav className="ml-auto">
+            <span className="navbar-text">Total Req Served: {this.state.reqCount}</span>
+            {/* <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link> */}
           </Nav>
-          <Form inline>
+          {/* <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Button variant="outline-primary">Search</Button>
           </Form> */}
