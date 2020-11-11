@@ -11,7 +11,7 @@ export class NavBarSuper extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://sotly.herokuapp.com/api/v1/count')
+    axios.get('https://codedoc.tech/api/v1/count')
       .then((result) => {
         this.setState({reqCount: result.data[0].count})
       })
