@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Row, Button, Form, Col, Alert } from "react-bootstrap";
 import axios from "axios";
 
+import "../static/css/main.css"
+
 export class ShortForm extends Component {
   constructor() {
     super();
@@ -106,10 +108,11 @@ export class ShortForm extends Component {
 
     return (
       <div>
-        <Form onSubmit={this.onSubmit}>
+        <Form.Group>
           <Row>
             <Col>
               <Form.Control
+                className="mb-3"
                 type="text"
                 onChange={this.onChange}
                 name="urlReceived"
@@ -117,8 +120,11 @@ export class ShortForm extends Component {
                 placeholder="URL"
               />
             </Col>
+          </Row>
+          <Row>
             <Col>
               <Form.Control
+                className="mb-3"
                 type="text"
                 onChange={this.onChange}
                 name="urlCode"
@@ -126,11 +132,15 @@ export class ShortForm extends Component {
                 placeholder="Alias (Optional)"
               />
             </Col>
-            <Col>
-              <Button type="submit">Short</Button>
-            </Col>
           </Row>
-        </Form>
+          <Row>
+
+            <Col>
+              <Button disabled={!urlReceived} onClick={this.onSubmit} variant="success" type="submit" block>Short</Button>
+            </Col>
+
+          </Row>
+        </Form.Group>
 
         <div className="mt-5">{alert}</div>
 
@@ -138,6 +148,7 @@ export class ShortForm extends Component {
           <Row>
             <Col>
               <Form.Control
+                className="mb-3"
                 ref={(textarea) => (this.textArea = textarea)}
                 onChange={this.onChange}
                 name="shortedUrl"
@@ -146,8 +157,10 @@ export class ShortForm extends Component {
                 readOnly
               />
             </Col>
+          </Row>
+          <Row>
             <Col>
-              <Button onClick={this.copyToClipboard}>Copy</Button>
+              <Button disabled={!shortedUrl} variant="info" onClick={this.copyToClipboard} block>Copy</Button>
               <p className="text-muted">{this.state.copySuccess}</p>
             </Col>
           </Row>
