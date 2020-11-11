@@ -42,7 +42,7 @@ export class ShortForm extends Component {
 
     axios
       .post(
-        "https://sotly.herokuapp.com/api/v1/shorten",
+        "https://codedoc.tech/api/v1/shorten",
         {
           urlReceived: this.state.urlReceived,
           urlCode: this.state.urlCode,
@@ -54,7 +54,7 @@ export class ShortForm extends Component {
           this.createAlert("success", res.data.statusTxt);
 
           this.setState({
-            shortedUrl: `https://sotly.herokuapp.com/${res.data.shortCode}`,
+            shortedUrl: `https://codedoc.tech/${res.data.shortCode}`,
           });
         }
 
