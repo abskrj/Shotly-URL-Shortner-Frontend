@@ -7,14 +7,20 @@ import "./Analytics.css";
 
 export default function Analytics() {
     const [analyticsId, setAnalyticsId] = useState(null);
-    const [analytics, setAnalytics] = useState(null);
-    const { addToast } = useToasts()
+    const [analytics, setAnalytics] = useState();
+    const { addToast } = useToasts();
 
     const fetchAnalytics = async () => {
         try {
-            let resp = await axios.get(`https://codedoc.tech/api/v1/analytics?uId=${analyticsId}`, { timeout: 1000 });
+            let resp = await axios.get(`https://codedoc.tech/api/v1/analytics?uId=${analyticsId}`, { timeout: 4000 });
             if (resp && resp.status === 200) {
                 setAnalytics(resp.data);
+                let allIDs = localStorage.getItem("aIds");
+                if (!allIDs) {
+                    localStorage.setItem("aIds", analyticsId);
+                } else {
+                    localStorage.setItem("aIds", `${allIDs},${analyticsId}`);
+                }
             }
         } catch {
             addToast("Invalid Analytics ID", {

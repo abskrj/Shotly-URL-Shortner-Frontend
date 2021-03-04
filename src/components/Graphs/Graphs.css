@@ -1,0 +1,14 @@
+.graph__main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.graph__ip {
+    height: 30vh;
+    overflow-y: scroll;
+}
+
+.graph__main div {
+    width: 30vw;
+}
