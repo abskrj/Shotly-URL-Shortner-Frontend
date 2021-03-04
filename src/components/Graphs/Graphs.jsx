@@ -6,7 +6,9 @@ const parseAnalytics = aId => {
     let platform = {};
     let browser = {};
     let os = {};
+    let count = 0;
     aId.platform.map(data => {
+        count++;
         platform[data] = platform[data] ? platform[data] + 1 : 1;
     })
     aId.browser.map(data => {
@@ -16,7 +18,7 @@ const parseAnalytics = aId => {
         os[data] = os[data] ? os[data] + 1 : 1;
     })
 
-    return { platform, browser, os }
+    return { platform, browser, os, count }
 }
 
 const generateGraphData = (data, type) => {
@@ -40,34 +42,42 @@ export default function Graphs({ aId }) {
     const [platformGraphData, setPlatformGraphData] = useState(null);
     const [browserGraphData, setBrowserGraphData] = useState(null);
     const [osGraphData, setOsGraphData] = useState(null);
-    let { platform, browser, os } = parseAnalytics(aId);
+    const [totalVisits, setTotalVisits] = useState(null);
+    let { platform, browser, os, count } = parseAnalytics(aId);
 
     useEffect(() => {
         setPlatformGraphData(generateGraphData(platform, "Platform"));
         setBrowserGraphData(generateGraphData(browser, "Browser"));
         setOsGraphData(generateGraphData(os, "Operating System"));
+        console.log(count)
+        setTotalVisits(count);
     }, []);
 
 
     return (
-        <div className="graph__main">
-            <div className="graph__ip">
-                <center>IP Addresses</center>
-                <ul>
-                    {
-                        aId.ip.map(data => <li key={data} >{data}</li>)
-                    }
-                </ul>
-            </div>
-            <div className="graph__platform">
-                {platformGraphData ? <Bar data={platformGraphData} /> : ""}
-            </div>
-            <div className="graph__browser">
-                {browserGraphData ? <Bar data={browserGraphData} /> : ""}
-            </div>
+        <div className="graph">
 
-            <div className="graph__os">
-                {osGraphData ? <Bar data={osGraphData} /> : ""}
+            {totalVisits ? <center> <h3> Total Visits: {totalVisits} </h3></center> : ""}
+
+            <div className="graph__main">
+                <div className="graph__ip">
+                    <center>IP Addresses</center>
+                    <ul>
+                        {
+                            aId.ip.map(data => <li key={data} >{data}</li>)
+                        }
+                    </ul>
+                </div>
+                <div className="graph__platform">
+                    {platformGraphData ? <Bar data={platformGraphData} /> : ""}
+                </div>
+                <div className="graph__browser">
+                    {browserGraphData ? <Bar data={browserGraphData} /> : ""}
+                </div>
+
+                <div className="graph__os">
+                    {osGraphData ? <Bar data={osGraphData} /> : ""}
+                </div>
             </div>
         </div>
     )

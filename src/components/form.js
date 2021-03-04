@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Row, Button, Form, Col, Alert } from "react-bootstrap";
 import axios from "axios";
 
-import "../static/css/main.css"
+import "../static/css/main.css";
 
 export class ShortForm extends Component {
   constructor() {
@@ -107,7 +107,9 @@ export class ShortForm extends Component {
     const alert = this.state.alert;
 
     return (
-      <div>
+      <div className="form__main">
+        <center><h3>Short URLs <span>Anonymously</span></h3> <h4>With Awesome Analytics <span>(No Login/Register)</span></h4></center>
+        
         <Form.Group>
           <Row>
             <Col>

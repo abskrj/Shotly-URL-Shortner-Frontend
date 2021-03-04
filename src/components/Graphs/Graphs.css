@@ -1,3 +1,7 @@
+.graph {
+    padding-top: 1vh;
+}
+
 .graph__main {
     display: flex;
     justify-content: space-between;
@@ -10,5 +14,6 @@
 }
 
 .graph__main div {
+    margin-top: 5vh;
     width: 30vw;
 }

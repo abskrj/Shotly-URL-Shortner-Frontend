@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
-import axios from 'axios';
 import { Link } from "react-router-dom";
 
 export class NavBarSuper extends Component {
@@ -11,12 +10,12 @@ export class NavBarSuper extends Component {
     }
   }
 
-  componentDidMount() {
-    axios.get('https://codedoc.tech/api/v1/count')
-      .then((result) => {
-        this.setState({ reqCount: result.data[0].count })
-      })
-  }
+  // componentDidMount() {
+  //   axios.get('https://codedoc.tech/api/v1/count')
+  //     .then((result) => {
+  //       this.setState({ reqCount: result.data[0].count })
+  //     })
+  // }
 
 
   render() {

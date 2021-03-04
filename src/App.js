@@ -9,6 +9,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import About from "./components/About/About";
 
 
 const Analytics = React.lazy(() => import("./components/Analytics/Analytics"));
@@ -21,9 +22,15 @@ export default function App() {
           <NavBarSuper />
           <Container className="mt-5">
             <Switch>
+
               <Route path="/analytics">
                 <Analytics />
               </Route>
+
+              <Route path="/about">
+                <About />
+              </Route>
+
               <Route path="/">
                 <ShortForm />
               </Route>

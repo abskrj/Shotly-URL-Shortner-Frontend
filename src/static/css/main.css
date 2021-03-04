@@ -6,4 +6,15 @@
 
 body {
     font-family: 'RocknRoll One', sans-serif;
+    background-color: aquamarine;
+}
+
+.form__main center {
+    margin: 2vh 0vw 10vh 0vw;
+    border: 4px solid #08d9d6;
+    border-radius: 2px;
+}
+
+.form__main span {
+    color: #ff2e63;
 }
