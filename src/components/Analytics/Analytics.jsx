@@ -19,7 +19,10 @@ export default function Analytics() {
                 if (!allIDs) {
                     localStorage.setItem("aIds", analyticsId);
                 } else {
-                    localStorage.setItem("aIds", `${allIDs},${analyticsId}`);
+                    allIDs = allIDs.split(',');
+                    if (allIDs.indexOf(analyticsId) === -1) {
+                        localStorage.setItem("aIds", `${allIDs},${analyticsId}`);
+                    }
                 }
             }
         } catch {
