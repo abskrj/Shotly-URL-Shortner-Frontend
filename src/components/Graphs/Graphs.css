@@ -1,5 +1,5 @@
 .graph {
-    padding-top: 1vh;
+    /* padding-top: 1vh; */
 }
 
 .graph__main {
@@ -15,5 +15,21 @@
 
 .graph__main div {
     margin-top: 5vh;
-    width: 30vw;
+    width: 50vh;
+}
+
+@media only screen and (max-width: 725px) {
+    .graph {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .graph__main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .canvas-container {
+        width: 90vw !important;
+    }
 }

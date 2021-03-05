@@ -69,14 +69,14 @@ export default function Graphs({ aId }) {
                     </ul>
                 </div>
                 <div className="graph__platform">
-                    {platformGraphData ? <Bar data={platformGraphData} /> : ""}
+                    {platformGraphData ? <Bar data={platformGraphData} options={{maintainAspectRatio: false}} /> : ""}
                 </div>
                 <div className="graph__browser">
-                    {browserGraphData ? <Bar data={browserGraphData} /> : ""}
+                    {browserGraphData ? <Bar data={browserGraphData} options={{maintainAspectRatio: false}} /> : ""}
                 </div>
 
                 <div className="graph__os">
-                    {osGraphData ? <Bar data={osGraphData} /> : ""}
+                    {osGraphData ? <Bar data={osGraphData} options={{maintainAspectRatio: false}} /> : ""}
                 </div>
             </div>
         </div>
