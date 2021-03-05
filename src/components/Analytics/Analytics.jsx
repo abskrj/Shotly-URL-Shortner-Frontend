@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, FormControl, InputGroup } from 'react-bootstrap';
 import { useToasts } from 'react-toast-notifications';
 import axios from "axios";
 import Graphs from '../Graphs/Graphs';
+import { Hint } from 'react-autocomplete-hint';
 import "./Analytics.css";
 
 export default function Analytics() {
     const [analyticsId, setAnalyticsId] = useState(null);
     const [analytics, setAnalytics] = useState();
     const { addToast } = useToasts();
+    const [aIdCached, setAIdCached] = useState([])
+    
+    useEffect(() => {
+        const data = localStorage.getItem("aIds") || null;
+        if (data) setAIdCached(data.split(','));
+    }, [])
 
     const fetchAnalytics = async () => {
         try {
@@ -37,12 +44,12 @@ export default function Analytics() {
     return (
         <div className="analytics__main">
             <InputGroup className="mb-3">
-                <FormControl
-                    placeholder="Analytics ID"
-                    aria-label="Analytics ID"
-                    aria-describedby="basic-addon2"
-                    onChange={e => setAnalyticsId(e.target.value)}
-                />
+                    <FormControl
+                        placeholder="Analytics ID"
+                        aria-label="Analytics ID"
+                        aria-describedby="basic-addon2"
+                        onChange={e => setAnalyticsId(e.target.value)}
+                    />
                 <InputGroup.Append>
                     <Button disabled={!analyticsId} value={analyticsId} onClick={fetchAnalytics} variant="outline-dark">Search</Button>
                 </InputGroup.Append>

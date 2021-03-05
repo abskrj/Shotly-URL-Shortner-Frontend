@@ -5,18 +5,7 @@ import { Link } from "react-router-dom";
 export class NavBarSuper extends Component {
   constructor() {
     super();
-    this.state = {
-      reqCount: 0
-    }
   }
-
-  // componentDidMount() {
-  //   axios.get('https://codedoc.tech/api/v1/count')
-  //     .then((result) => {
-  //       this.setState({ reqCount: result.data[0].count })
-  //     })
-  // }
-
 
   render() {
     return (

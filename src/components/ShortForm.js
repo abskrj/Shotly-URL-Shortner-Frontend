@@ -109,6 +109,7 @@ export default function ShortForm() {
               name="urlReceived"
               value={urlReceived}
               placeholder="URL"
+              autoComplete="off"
             />
           </Col>
         </Row>
@@ -121,6 +122,7 @@ export default function ShortForm() {
               name="urlCode"
               value={urlCode}
               placeholder="Alias (Optional)"
+              autoComplete="off"
             />
           </Col>
         </Row>
