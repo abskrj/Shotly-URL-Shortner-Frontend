@@ -26,8 +26,8 @@ export default function Analytics() {
                 }
             }
         } catch {
-            addToast("Invalid Analytics ID", {
-                appearance: "error",
+            addToast("0 Visits OR Invalid Analytics ID", {
+                appearance: "info",
                 autoDismiss: true,
             });
         }

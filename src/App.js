@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { NavBarSuper } from "./components/navbar";
-import { ShortForm } from "./components/form";
+import ShortForm from "./components/ShortForm";
 import { Container } from "react-bootstrap";
 import { ToastProvider } from 'react-toast-notifications';
 
@@ -17,7 +17,7 @@ const Analytics = React.lazy(() => import("./components/Analytics/Analytics"));
 export default function App() {
   return (
     <Router>
-      <ToastProvider>
+      <ToastProvider placement="top-center">
         <Suspense fallback={<div>Loading...</div>}>
           <NavBarSuper />
           <Container className="mt-5">
