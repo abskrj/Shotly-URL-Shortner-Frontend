@@ -19,7 +19,7 @@ export default function Analytics() {
 
     const fetchAnalytics = async () => {
         try {
-            let resp = await axios.get(`https://codedoc.tech/api/v1/analytics?uId=${analyticsId}`, { timeout: 4000 });
+            let resp = await axios.get(`https://sotly.co/api/v1/analytics?uId=${analyticsId}`, { timeout: 4000 });
             if (resp && resp.status === 200) {
                 setAnalytics(resp.data);
                 let allIDs = localStorage.getItem("aIds");

@@ -24,7 +24,7 @@ export default function ShortForm() {
 
     axios
       .post(
-        "https://codedoc.tech/api/v1/shorten",
+        "https://sotly.co/api/v1/shorten",
         {
           urlReceived: urlReceived,
           urlCode: urlCode,
@@ -40,7 +40,7 @@ export default function ShortForm() {
           });
           
 
-          setShortedUrl(`https://codedoc.tech/${res.data.shortCode}`);
+          setShortedUrl(`https://sotly.co/${res.data.shortCode}`);
           setAnalyticsID(res.data.urlID);
           addToast("Click the fields to Copy", {
             appearance: "info",
