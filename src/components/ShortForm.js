@@ -104,8 +104,11 @@ export default function ShortForm() {
 
   return (
     <div className="form__main">
-      <center><h3>Short URLs <span>Anonymously</span></h3> <h4>With Awesome Analytics <span>(No Login/Register)</span></h4></center>
-
+      <div className="form__headerWrap">
+        <div className="form__header">
+          <center><h3>Short URLs <span>Anonymously</span></h3> <h4>With Awesome Analytics <span>(No Login/Register)</span></h4></center>
+        </div>
+      </div>
       <Form.Group>
         <Row>
           <Col>
@@ -167,7 +170,6 @@ export default function ShortForm() {
             />
           </Col>
         </Row>
-
       </div>
     </div>
   )

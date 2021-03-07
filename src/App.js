@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { NavBarSuper } from "./components/navbar";
+import { NavBarSuper } from "./components/Navbar/NavBarSuper";
 import ShortForm from "./components/ShortForm";
 import { Container } from "react-bootstrap";
 import { ToastProvider } from 'react-toast-notifications';
@@ -9,9 +9,9 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import About from "./components/About/About";
 
-
+const About = React.lazy(() => import("./components/About/About"));
+const Terms = React.lazy(() => import("./components/Terms/Terms"));
 const Analytics = React.lazy(() => import("./components/Analytics/Analytics"));
 
 export default function App() {
@@ -25,6 +25,10 @@ export default function App() {
 
               <Route path="/analytics">
                 <Analytics />
+              </Route>
+
+              <Route path="/terms">
+                <Terms />
               </Route>
 
               <Route path="/about">

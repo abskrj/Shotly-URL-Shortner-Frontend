@@ -1,0 +1,15 @@
+.about {
+    padding: 0.25rem;
+    border-radius: 10px;
+    background: linear-gradient(to right, #ff2e63, #08d9d6);
+}
+
+.about p {
+    font-size: larger;
+}
+
+.about__section {
+    border-radius: 5px;
+    background-color: white;
+    padding: 1rem;
+}

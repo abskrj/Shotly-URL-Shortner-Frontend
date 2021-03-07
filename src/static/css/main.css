@@ -8,12 +8,28 @@ body {
     font-family: 'RocknRoll One', sans-serif;
 }
 
-.form__main center {
+.form__headerWrap {
     margin: 2vh 0vw 10vh 0vw;
-    border: 4px solid #08d9d6;
-    border-radius: 2px;
+    padding: 0.25rem;
+    border-radius: 10px;
+    background: linear-gradient(to right, #ff2e63, #08d9d6);
 }
 
-.form__main span {
+.form__header {
+    border-radius: 5px;
+    background-color: white;
+    padding: 1rem;
+}
+
+span {
     color: #ff2e63;
+}
+
+.bottom {
+    position: fixed;
+    bottom: 0;
+}
+
+.container {
+    min-height: calc(100vh - 200px);
 }
