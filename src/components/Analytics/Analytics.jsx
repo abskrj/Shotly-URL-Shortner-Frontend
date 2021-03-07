@@ -4,6 +4,7 @@ import { useToasts } from 'react-toast-notifications';
 import axios from "axios";
 import Graphs from '../Graphs/Graphs';
 import "./Analytics.css";
+import Suggestion from '../Suggestion/Suggestion';
 
 export default function Analytics() {
     const [analyticsId, setAnalyticsId] = useState(null);
@@ -46,9 +47,13 @@ export default function Analytics() {
                     <FormControl
                         placeholder="Analytics ID"
                         aria-label="Analytics ID"
+                        list="analyticsInput"
                         aria-describedby="basic-addon2"
                         onChange={e => setAnalyticsId(e.target.value)}
                     />
+                    {
+                        aIdCached ? <Suggestion inputId="analyticsInput" analyticsIDs={aIdCached} /> : ""
+                    }
                 <InputGroup.Append>
                     <Button disabled={!analyticsId} value={analyticsId} onClick={fetchAnalytics} variant="outline-dark">Search</Button>
                 </InputGroup.Append>

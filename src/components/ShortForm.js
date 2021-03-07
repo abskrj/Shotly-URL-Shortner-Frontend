@@ -38,10 +38,17 @@ export default function ShortForm() {
             appearance: "success",
             autoDismiss: true,
           });
-          
+
 
           setShortedUrl(`https://sotly.co/${res.data.shortCode}`);
           setAnalyticsID(res.data.urlID);
+          let allIDs = localStorage.getItem("aIds");
+          if (!allIDs) {
+            localStorage.setItem("aIds", res.data.urlID);
+          } else {
+            allIDs = allIDs.split(',');
+            localStorage.setItem("aIds", `${allIDs},${res.data.urlID}`);
+          }
           addToast("Click the fields to Copy", {
             appearance: "info",
             autoDismiss: false,
@@ -74,7 +81,7 @@ export default function ShortForm() {
   };
 
   const copyShortedUrl = e => {
-    if(!shortedUrl) return;
+    if (!shortedUrl) return;
     shortedEl.current.select();
     document.execCommand("copy");
     e.target.focus();
@@ -85,7 +92,7 @@ export default function ShortForm() {
   };
 
   const copyAnalyticsID = e => {
-    if(!analyticsID) return;
+    if (!analyticsID) return;
     analyticsEl.current.select();
     document.execCommand("copy");
     e.target.focus();
@@ -147,8 +154,8 @@ export default function ShortForm() {
               placeholder="Shorted URL"
               readOnly
             />
-            </Col>
-            <Col>
+          </Col>
+          <Col>
             <Form.Control
               ref={analyticsEl}
               onChange={e => setAnalyticsID(e.target.value)}

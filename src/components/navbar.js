@@ -3,10 +3,6 @@ import { Navbar, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export class NavBarSuper extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
     return (
       <div>
@@ -15,7 +11,7 @@ export class NavBarSuper extends Component {
             <Navbar.Brand>
               <img
                 src="/sotly200.png"
-                width="100"
+                width="70"
                 height="50"
                 className="d-inline-block align-top"
                 alt="React Bootstrap logo"
