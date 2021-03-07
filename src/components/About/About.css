@@ -2,6 +2,7 @@
     padding: 0.25rem;
     border-radius: 10px;
     background: linear-gradient(to right, #ff2e63, #08d9d6);
+    margin-bottom: 12vh;
 }
 
 .about p {

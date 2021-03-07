@@ -9,7 +9,7 @@ body {
 }
 
 .form__headerWrap {
-    margin: 2vh 0vw 10vh 0vw;
+    margin: 2vh 0vw 6vh 0vw;
     padding: 0.25rem;
     border-radius: 10px;
     background: linear-gradient(to right, #ff2e63, #08d9d6);
