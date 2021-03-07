@@ -3,7 +3,6 @@ import { Button, FormControl, InputGroup } from 'react-bootstrap';
 import { useToasts } from 'react-toast-notifications';
 import axios from "axios";
 import Graphs from '../Graphs/Graphs';
-import { Hint } from 'react-autocomplete-hint';
 import "./Analytics.css";
 
 export default function Analytics() {

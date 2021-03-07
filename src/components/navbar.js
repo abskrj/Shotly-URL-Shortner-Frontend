@@ -14,7 +14,7 @@ export class NavBarSuper extends Component {
           <Link to="/">
             <Navbar.Brand>
               <img
-                src="/favicon.ico"
+                src="/sotly200.png"
                 width="150"
                 height="40"
                 className="d-inline-block align-top"
