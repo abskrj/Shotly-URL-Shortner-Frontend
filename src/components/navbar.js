@@ -15,8 +15,8 @@ export class NavBarSuper extends Component {
             <Navbar.Brand>
               <img
                 src="/sotly200.png"
-                width="150"
-                height="40"
+                width="100"
+                height="50"
                 className="d-inline-block align-top"
                 alt="React Bootstrap logo"
               />
