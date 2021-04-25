@@ -51,7 +51,6 @@ export default function CloudStorage() {
         }
         const fileName = makeid();
         let ext = file.name.split('.');
-        ext = ext[ext.length-1];
         axios
             .post(
                 "https://sotly.co/api/v1/shorten",
