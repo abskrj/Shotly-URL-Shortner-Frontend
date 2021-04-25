@@ -7,14 +7,14 @@ const parseAnalytics = aId => {
     let browser = {};
     let os = {};
     let count = 0;
-    aId.platform.map(data => {
+    aId.platform.forEach(data => {
         count++;
         platform[data] = platform[data] ? platform[data] + 1 : 1;
     })
-    aId.browser.map(data => {
+    aId.browser.forEach(data => {
         browser[data] = browser[data] ? browser[data] + 1 : 1;
     })
-    aId.os.map(data => {
+    aId.os.forEach(data => {
         os[data] = os[data] ? os[data] + 1 : 1;
     })
 
@@ -43,15 +43,14 @@ export default function Graphs({ aId }) {
     const [browserGraphData, setBrowserGraphData] = useState(null);
     const [osGraphData, setOsGraphData] = useState(null);
     const [totalVisits, setTotalVisits] = useState(null);
-    let { platform, browser, os, count } = parseAnalytics(aId);
-
+    
     useEffect(() => {
+        let { platform, browser, os, count } = parseAnalytics(aId);
         setPlatformGraphData(generateGraphData(platform, "Platform"));
         setBrowserGraphData(generateGraphData(browser, "Browser"));
         setOsGraphData(generateGraphData(os, "Operating System"));
-        console.log(count)
         setTotalVisits(count);
-    }, []);
+    }, [aId]);
 
 
     return (

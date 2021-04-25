@@ -1,0 +1,30 @@
+.download {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 30vh;
+}
+
+.downloadBtn {
+    color: white;
+    /* width: 30%; */
+    background-color: #ec3750;
+    border-radius: 100px;
+    padding: 1% 2% 1% 2%;
+    box-shadow: rgb(0 0 0 / 13%) 0px 4px 8px;
+    transition: transform 0.125s ease-in-out 0s, box-shadow 0.125s ease-in-out 0s;
+    background-image: radial-gradient(at left top, rgb(255, 140, 55), rgb(236, 55, 80));
+}
+
+.downloadBtn:hover:enabled {
+    box-shadow: rgb(0 0 0 / 6%) 0px 1px 2px, rgb(0 0 0 / 13%) 0px 8px 12px;
+    transform: scale(1.06);
+}
+
+@media only screen and (max-width: 600px) {
+    .download {
+        height: 40vh;
+    }
+  }
+  

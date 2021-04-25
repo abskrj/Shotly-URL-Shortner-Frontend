@@ -8,23 +8,6 @@ body {
     font-family: 'RocknRoll One', sans-serif;
 }
 
-.form__headerWrap {
-    margin: 2vh 0vw 6vh 0vw;
-    padding: 0.25rem;
-    border-radius: 10px;
-    background: linear-gradient(to right, #ff2e63, #08d9d6);
-}
-
-.form__header {
-    border-radius: 7px;
-    background-color: white;
-    padding: 1rem;
-}
-
-span {
-    color: #ff2e63;
-}
-
 .bottom {
     position: fixed;
     bottom: 0;

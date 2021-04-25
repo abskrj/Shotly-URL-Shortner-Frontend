@@ -1,0 +1,7 @@
+.fileinfo {
+    display: flex;
+    justify-content: space-around;
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding-top: 1.5vh;
+}

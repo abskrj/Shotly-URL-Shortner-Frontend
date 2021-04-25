@@ -4,6 +4,7 @@ import axios from "axios";
 import { useToasts } from 'react-toast-notifications';
 
 import "../static/css/main.css";
+import Slider from "./Slider/Slider";
 
 export default function ShortForm() {
   const [urlReceived, setUrlReceived] = useState("");
@@ -51,7 +52,7 @@ export default function ShortForm() {
           }
           addToast("Click the fields to Copy", {
             appearance: "info",
-            autoDismiss: false,
+            autoDismiss: true,
           });
         }
 
@@ -104,11 +105,7 @@ export default function ShortForm() {
 
   return (
     <div className="form__main">
-      <div className="form__headerWrap">
-        <div className="form__header">
-          <center><h3>Short URLs <span>Anonymously</span></h3> <h4>With Awesome Analytics <span>(No Login/Register)</span></h4></center>
-        </div>
-      </div>
+      <Slider />
       <Form.Group>
         <Row>
           <Col>

@@ -1,29 +1,27 @@
 import React, { Component } from "react";
-import { Navbar, Nav, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
+import "./Navbar.css";
 
 export class NavBarSuper extends Component {
   render() {
     return (
-      <div>
-        <Navbar bg="light" variant="light">
-          <Link to="/">
-            <Navbar.Brand>
-              <img
-                src="/sotly200.png"
-                width="70"
-                height="50"
-                className="d-inline-block align-top"
-                alt="React Bootstrap logo"
-              />
-            </Navbar.Brand>
-          </Link>
-          <Nav className="ml-auto">
+      <div className="navbar">
+        <Link to="/">
+          <img
+            src="/sotly200.png"
+            width="70"
+            height="50"
+            className="d-inline-block align-top"
+            alt="React Bootstrap logo"
+          />
+        </Link>
+          <div className="nav__right">
             <Link to="/about" ><Button variant="link">About</Button></Link>
             <Link to="/analytics" ><Button variant="outline-secondary">Analytics</Button></Link>
-          </Nav>
-        </Navbar>
-      </div>
+          </div>
+        </div>
     );
   }
 }
