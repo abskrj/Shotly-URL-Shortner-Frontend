@@ -43,13 +43,15 @@ export default function Graphs({ aId }) {
     const [browserGraphData, setBrowserGraphData] = useState(null);
     const [osGraphData, setOsGraphData] = useState(null);
     const [totalVisits, setTotalVisits] = useState(null);
-    
+    const [URLData, setURLData] = useState({ original: "", shorted: "" });
+
     useEffect(() => {
         let { platform, browser, os, count } = parseAnalytics(aId);
         setPlatformGraphData(generateGraphData(platform, "Platform"));
         setBrowserGraphData(generateGraphData(browser, "Browser"));
         setOsGraphData(generateGraphData(os, "Operating System"));
         setTotalVisits(count);
+        setURLData({ original: aId.originalUrl, shorted: aId.shortUrl });
     }, [aId]);
 
 
@@ -57,6 +59,8 @@ export default function Graphs({ aId }) {
         <div className="graph">
 
             {totalVisits ? <center> <h3> Total Visits: {totalVisits} </h3></center> : ""}
+            {URLData ? <center> <h6> Original URL: <a href={URLData.original}>{URLData.original}</a> <br /> Shorted URL: {URLData.shorted} </h6></center> : ""
+            }
 
             <div className="graph__main">
                 <div className="graph__ip">
@@ -68,16 +72,16 @@ export default function Graphs({ aId }) {
                     </ul>
                 </div>
                 <div className="graph__platform">
-                    {platformGraphData ? <Bar data={platformGraphData} options={{maintainAspectRatio: false}} /> : ""}
+                    {platformGraphData ? <Bar data={platformGraphData} options={{ maintainAspectRatio: false }} /> : ""}
                 </div>
                 <div className="graph__browser">
-                    {browserGraphData ? <Bar data={browserGraphData} options={{maintainAspectRatio: false}} /> : ""}
+                    {browserGraphData ? <Bar data={browserGraphData} options={{ maintainAspectRatio: false }} /> : ""}
                 </div>
 
                 <div className="graph__os">
-                    {osGraphData ? <Bar data={osGraphData} options={{maintainAspectRatio: false}} /> : ""}
+                    {osGraphData ? <Bar data={osGraphData} options={{ maintainAspectRatio: false }} /> : ""}
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
